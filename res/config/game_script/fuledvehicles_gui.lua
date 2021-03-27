@@ -11,11 +11,14 @@ local resourceStorage = {
 
 local resourceConsumer = {
     ["coal"] = {
+        "industry/fuelStation/trainCoalFuelStation_1.con",
     },
     ["diesel"] = {
+        "industry/fuelStation/trainDieselFuelStation_1.con",
     },
     ["electricity"] = {
-        "industry/steelMill/celmi/betterseaPowerStation.con"
+        "industry/powerPlant/coalPowerPlant_1.con",
+        "industry/powerPlant/dieselPowerPlant_1.con"
     },
 }
 
@@ -34,7 +37,6 @@ function data()
             if id == "SimCargoSystem" and name == "OnToArriveAtDestination" then
                 local cargo = fuledvehiclesHelper.getCargoObject(param)
                 local target = fuledvehiclesHelper.getConstructionObject(cargo.targetEntity)
-
                 for k,v in pairs(resourceConsumer) do
                     if contains(v, target.fileName) then
                         local capacityKey = k .. "Capacity"
